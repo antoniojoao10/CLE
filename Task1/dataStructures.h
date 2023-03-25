@@ -18,10 +18,13 @@ typedef struct
 {
     int fileID;
     int nWords;
+    int fix;
     int a;
     int e;
     int i;
     int o;
     int u;
+    int c;
+    int y;
 } TempResults;
 #endif /* DATASTRUCT_H */

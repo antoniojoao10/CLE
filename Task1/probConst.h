@@ -14,10 +14,10 @@
 /* Generic parameters */
 
 /** \brief maximum number of producers / consumers */
-#define  N           8
+#define  N           4
 
 /** \brief maximum capacity of the data transfer region (in number of values that can be stored) */
-#define  K           50
+#define  K           100
 
 
 #endif /* PROBCONST_H_ */

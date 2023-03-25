@@ -71,6 +71,9 @@ int main (int argc, char *argv[])
   int opt;                                                                                        /* selected option */
   int nThreads = N;                                                               /* number of threads to be created */
 
+  if( strcmp(argv[1],"-t") == 0 ){
+    nThreads = *argv[2] - '0';
+  }
   // do
   // { switch ((opt = getopt (argc, argv, "t:p:h")))
   //   { case 't': /* number of threads to be created */
@@ -145,7 +148,14 @@ int main (int argc, char *argv[])
          exit (EXIT_FAILURE);
        }
 
-  for(int f = 1 ; f < argc ; f++){
+  int starting = 0;
+  if ( strcmp(argv[1],"-t") == 0 ) starting = 2;
+  char* files[(argc - (starting + 1) )];
+  memset(files,0,(argc - (starting + 1) ));
+  for(int f = starting + 1 ; f < argc ; f++) files[f-(starting + 1)] = argv[f];
+  storeFileNames(0,argc-(starting+1),files);
+  for(int f = starting + 1 ; f < argc ; f++)
+  {
     FILE * fp;
     int display;
 
@@ -155,21 +165,28 @@ int main (int argc, char *argv[])
     }
     fp = fopen(argv[f], "r");
     bool endF = false;
-
+    
+    bool inWord = false;
+    int newWord[] = {166,147,157,156,32,46,44,58,59,45,63,33,34,40,41,91,9,10,13,194,187,171};
+    int arrLen = sizeof newWord / sizeof newWord[0];
+    int prev = 0;
     while (1) {
       int textChunk[6000];
       int b = 0;
 
-      for(; b < 4096 ; b++ ){
+      while(1){
         // reading file
         display = fgetc(fp);
         textChunk[b] = display;
+        bool special = false;
+        bool pastInWord = inWord;
         // end of file indicator
         if (feof(fp))
         {
           endF = true;
           break;
         } 
+        
         // UTF-8  -->  E280**
         if( display == 226)
         {
@@ -179,8 +196,19 @@ int main (int argc, char *argv[])
           display = fgetc(fp);
           b += 1;
           textChunk[b] = display;
+          special = true;
         }
-        else if( display == 195 )
+        if( prev != 195 )
+        {
+          bool tmpInWord = true;
+          if(!inWord) if ( display == 95 ) tmpInWord = true;
+          if(inWord) if ( display == 39 || display == 95 || ( special && display == 152 ) || ( special && display == 153 )) tmpInWord = true;
+          if(inWord) for (int i = 0; i < arrLen; i++ ) if (newWord[i] == display || ( special && display == 93 ) || ( special && display == 148 )) tmpInWord = false;
+          if(!inWord) for (int i = 0; i < arrLen; i++) if (newWord[i] == display || display == 39 || ( special && display == 93 ) || ( special && display == 152 ) || ( special && display == 153 ) || ( special && display == 148 )) tmpInWord = false;
+          inWord = tmpInWord;
+          if( pastInWord && !inWord ) if(b >= 4096) break;
+        }
+        if( display == 195 )
         {
           display = fgetc(fp);
           b += 1;
@@ -192,11 +220,12 @@ int main (int argc, char *argv[])
           endF = true;
           break;
         } 
-
+        b +=1 ;
+        prev = display;
       }
       /* Create a data chunk*/
       Chunk *save = (Chunk *)malloc(sizeof(Chunk));
-      save->fileID = f;
+      save->fileID = f-(starting + 1);
       save->numBytes = b;
       for(int i = 0 ; i < b ; i++ )
       {
@@ -221,6 +250,7 @@ int main (int argc, char *argv[])
     printf ("thread worker, with id %u, has terminated: ", i);
     printf ("its status was %d\n", *pStatus);
   }
+  printProcessingResults(0);
   printf ("\nElapsed time = %.6f s\n", get_delta_time ());
 
   exit (EXIT_SUCCESS);

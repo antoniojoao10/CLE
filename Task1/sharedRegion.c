@@ -103,10 +103,11 @@ void printProcessingResults(unsigned int threadID)
         pthread_exit (&statusProd[threadID]);
     }
     for (int i = 0; i < nFiles; ++i) {
-        printf("\nFor file %s:\n", fNames[i]);
-        printf("Number of words: %d\n", mem[i].nWords);
-        printf("Number of words with A: %d\n", mem[i].a);
-        printf("Number of words with E: %d\n", mem[i].e);
+        printf("\nFile name: %s:\n", fNames[i]);
+        printf("Total number of words = %d\n", mem[i].nWords);
+        printf("N. of words witn an\n");
+        printf("\tA\tE\tI\tO\tU\tY\tC\n");
+        printf("\t%d\t%d\t%d\t%d\t%d\t%d\t%d\n", mem[i].a, mem[i].e, mem[i].i, mem[i].o, mem[i].u, mem[i].y, mem[i].c);
     }
 
 
@@ -136,15 +137,15 @@ void savePartialResults(unsigned int threadID, TempResults *partialResults)
          statusWorkers[threadID] = EXIT_FAILURE;
        pthread_exit (&statusWorkers[threadID]);
      }
-
     pthread_once (&init, initialization);
-
     mem[partialResults->fileID].nWords += partialResults->nWords;
     mem[partialResults->fileID].a += partialResults->a;
     mem[partialResults->fileID].e += partialResults->e;
     mem[partialResults->fileID].i += partialResults->i;
     mem[partialResults->fileID].o += partialResults->o;
     mem[partialResults->fileID].u += partialResults->u;
+    mem[partialResults->fileID].c += partialResults->c;
+    mem[partialResults->fileID].y += partialResults->y;
 
     if ((statusWorkers[threadID] = pthread_mutex_unlock (&accessCR)) != 0)       /* exit monitor */
      { errno = statusWorkers[threadID];                     /* save error in errno */

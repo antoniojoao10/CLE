@@ -19,6 +19,8 @@ void count(Chunk *in, TempResults *out)
     bool uFlag = true;
     int c = 0;
     bool cFlag = true;
+    int y = 0;
+    bool yFlag = true;
     int w = 0;
     bool go = false;
     int prev = 0;
@@ -42,7 +44,7 @@ void count(Chunk *in, TempResults *out)
             display = in->textChunk[p];
         }
         // end of file indicator
-        if ( !(p<in->numBytes) ) break;
+        //if ( !(p<in->numBytes) ) break;
         
         //printf("%i\n", display);
         if( prev != 195 ){
@@ -61,6 +63,7 @@ void count(Chunk *in, TempResults *out)
                 oFlag = true;
                 uFlag = true;
                 cFlag = true;
+                yFlag = true;
             }
         }
         // UTF-8  -->  C3**
@@ -113,6 +116,14 @@ void count(Chunk *in, TempResults *out)
                 cFlag = false;
             }
         }
+        if( yFlag )
+        {
+            if(display == 89 || display == 121 )
+            {
+                y++;
+                yFlag = false;
+            }
+        }
         if( display != 195 ) go = false;   
 
         // displaying every characters
@@ -126,6 +137,8 @@ void count(Chunk *in, TempResults *out)
     out->i = i;
     out->o = o;
     out->u = u;
+    out->c = c;
+    out->y = y;
     // printf("\nA: %i \n", a);
     // printf("\nE: %i \n", e);
     // printf("\nI: %i \n", i);
