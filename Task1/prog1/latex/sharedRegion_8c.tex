@@ -1,0 +1,132 @@
+\hypertarget{sharedRegion_8c}{}\doxysection{shared\+Region.\+c File Reference}
+\label{sharedRegion_8c}\index{sharedRegion.c@{sharedRegion.c}}
+
+
+Problem name\+: Text processing in Portuguese This module implements and stores information shared by the main and worker thread.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}prob\+Const.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}data\+Structures.\+h\char`\"{}}\newline
+Include dependency graph for shared\+Region.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sharedRegion_8c_a3f23a26ab7b91dbd8909ea4fcb722fa1}{initialization}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the data transfer region. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sharedRegion_8c_a475fd680e647c08690063234d5fcfbca}{store\+File\+Names}} (unsigned int thread\+ID, int num\+Files, char $\ast$file\+Names\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Store the names of files to be processed from the shared region structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sharedRegion_8c_a9d6b2080ecf5082f1bb2c0a22db6b452}{print\+Processing\+Results}} (unsigned int thread\+ID)
+\begin{DoxyCompactList}\small\item\em Print the processing results. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sharedRegion_8c_a4b5133f0bed62c58256791608c30302e}{save\+Partial\+Results}} (unsigned int thread\+ID, \mbox{\hyperlink{structTempResults}{Temp\+Results}} $\ast$partial\+Results)
+\begin{DoxyCompactList}\small\item\em Adds the results from each worker. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sharedRegion_8c_a6b25bcddaae9b868109dc98a54476e46}\label{sharedRegion_8c_a6b25bcddaae9b868109dc98a54476e46}} 
+int \mbox{\hyperlink{sharedRegion_8c_a6b25bcddaae9b868109dc98a54476e46}{n\+Files}}
+\begin{DoxyCompactList}\small\item\em Number of files to be processed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sharedRegion_8c_a98491252776bf82d80fb025e19ac0648}\label{sharedRegion_8c_a98491252776bf82d80fb025e19ac0648}} 
+char $\ast$$\ast$ \mbox{\hyperlink{sharedRegion_8c_a98491252776bf82d80fb025e19ac0648}{f\+Names}}
+\begin{DoxyCompactList}\small\item\em Names of files to be processed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sharedRegion_8c_a1cb6018e07acf1baf8890aa9fe20572b}\label{sharedRegion_8c_a1cb6018e07acf1baf8890aa9fe20572b}} 
+int $\ast$ \mbox{\hyperlink{sharedRegion_8c_a1cb6018e07acf1baf8890aa9fe20572b}{status\+Workers}}
+\begin{DoxyCompactList}\small\item\em worker threads return status array \end{DoxyCompactList}\item 
+int $\ast$ \mbox{\hyperlink{sharedRegion_8c_aaa5ae87c35407721e6a2bd99a125fe5c}{status\+Main}}
+\begin{DoxyCompactList}\small\item\em producer thread return status array \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Problem name\+: Text processing in Portuguese This module implements and stores information shared by the main and worker thread. 
+
+(implementation file)
+
+\begin{DoxyAuthor}{Author}
+João Morais and Miguel Ferreira 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sharedRegion_8c_a3f23a26ab7b91dbd8909ea4fcb722fa1}\label{sharedRegion_8c_a3f23a26ab7b91dbd8909ea4fcb722fa1}} 
+\index{sharedRegion.c@{sharedRegion.c}!initialization@{initialization}}
+\index{initialization@{initialization}!sharedRegion.c@{sharedRegion.c}}
+\doxysubsubsection{\texorpdfstring{initialization()}{initialization()}}
+{\footnotesize\ttfamily void initialization (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the data transfer region. 
+
+This function is called exactly once by an worker thread. It initializes the data transfer region. \mbox{\Hypertarget{sharedRegion_8c_a9d6b2080ecf5082f1bb2c0a22db6b452}\label{sharedRegion_8c_a9d6b2080ecf5082f1bb2c0a22db6b452}} 
+\index{sharedRegion.c@{sharedRegion.c}!printProcessingResults@{printProcessingResults}}
+\index{printProcessingResults@{printProcessingResults}!sharedRegion.c@{sharedRegion.c}}
+\doxysubsubsection{\texorpdfstring{printProcessingResults()}{printProcessingResults()}}
+{\footnotesize\ttfamily void print\+Processing\+Results (\begin{DoxyParamCaption}\item[{unsigned int}]{thread\+ID }\end{DoxyParamCaption})}
+
+
+
+Print the processing results. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em thread\+ID} & thread identification \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sharedRegion_8c_a4b5133f0bed62c58256791608c30302e}\label{sharedRegion_8c_a4b5133f0bed62c58256791608c30302e}} 
+\index{sharedRegion.c@{sharedRegion.c}!savePartialResults@{savePartialResults}}
+\index{savePartialResults@{savePartialResults}!sharedRegion.c@{sharedRegion.c}}
+\doxysubsubsection{\texorpdfstring{savePartialResults()}{savePartialResults()}}
+{\footnotesize\ttfamily void save\+Partial\+Results (\begin{DoxyParamCaption}\item[{unsigned int}]{thread\+ID,  }\item[{\mbox{\hyperlink{structTempResults}{Temp\+Results}} $\ast$}]{partial\+Results }\end{DoxyParamCaption})}
+
+
+
+Adds the results from each worker. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em thread\+ID} & thread identification \\
+\hline
+{\em partial\+Results} & partial results obtained by processing a chunk \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sharedRegion_8c_a475fd680e647c08690063234d5fcfbca}\label{sharedRegion_8c_a475fd680e647c08690063234d5fcfbca}} 
+\index{sharedRegion.c@{sharedRegion.c}!storeFileNames@{storeFileNames}}
+\index{storeFileNames@{storeFileNames}!sharedRegion.c@{sharedRegion.c}}
+\doxysubsubsection{\texorpdfstring{storeFileNames()}{storeFileNames()}}
+{\footnotesize\ttfamily void store\+File\+Names (\begin{DoxyParamCaption}\item[{unsigned int}]{thread\+ID,  }\item[{int}]{num\+Files,  }\item[{char $\ast$}]{file\+Names\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Store the names of files to be processed from the shared region structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em thread\+ID} & thread identification \\
+\hline
+{\em num\+Files} & number of files to be processed \\
+\hline
+{\em file\+Names} & pointer to the array of file names \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{sharedRegion_8c_aaa5ae87c35407721e6a2bd99a125fe5c}\label{sharedRegion_8c_aaa5ae87c35407721e6a2bd99a125fe5c}} 
+\index{sharedRegion.c@{sharedRegion.c}!statusMain@{statusMain}}
+\index{statusMain@{statusMain}!sharedRegion.c@{sharedRegion.c}}
+\doxysubsubsection{\texorpdfstring{statusMain}{statusMain}}
+{\footnotesize\ttfamily int$\ast$ status\+Main\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+producer thread return status array 
+
+producer thread return status array
+
+producer threads return status array 

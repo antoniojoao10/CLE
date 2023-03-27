@@ -1,0 +1,24 @@
+digraph "dataStructures.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="dataStructures.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Problem name: Text processing in Portuguese."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="countWords.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$countWords_8c.html",tooltip="Problem name: Text processing in Portuguese Counts the number of words and words with A,..."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="countWords.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$countWords_8h.html",tooltip="Problem name: Text processing in Portuguese This module implements and stores information shared by t..."];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="main.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html",tooltip="Problem name: Text processing in Portuguese."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="fifo.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fifo_8c.html",tooltip="Problem name: Text processing in Portuguese Synchronization based on monitors. Both threads and the m..."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="fifo.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fifo_8h.html",tooltip="Problem name: Text processing in Portuguese."];
+  Node6 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="sharedRegion.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$sharedRegion_8c.html",tooltip="Problem name: Text processing in Portuguese This module implements and stores information shared by t..."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="sharedRegion.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$sharedRegion_8h.html",tooltip="Problem name: Text processing in Portuguese."];
+  Node8 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

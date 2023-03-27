@@ -1,0 +1,106 @@
+\hypertarget{fifo_8c}{}\doxysection{fifo.\+c File Reference}
+\label{fifo_8c}\index{fifo.c@{fifo.c}}
+
+
+Problem name\+: Text processing in Portuguese Synchronization based on monitors. Both threads and the monitor are implemented using the pthread library which enables the creation of a monitor of the Lampson / Redell type.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}prob\+Const.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}data\+Structures.\+h\char`\"{}}\newline
+Include dependency graph for fifo.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fifo_8c_adda94fffa3716e54d67962c01bbaa06d}{put\+Chunk}} (unsigned int prod\+Id, \mbox{\hyperlink{structChunk}{Chunk}} val, bool lt)
+\begin{DoxyCompactList}\small\item\em Store a value in the data transfer region. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fifo_8c_a3449032e46162fc89fd06ccb2c83d960}{get\+Chunk}} (unsigned int cons\+Id, \mbox{\hyperlink{structChunk}{Chunk}} $\ast$res)
+\begin{DoxyCompactList}\small\item\em Get a value from the data transfer region. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{fifo_8c_a86d6a642387583ff2e29dd9bab99be65}\label{fifo_8c_a86d6a642387583ff2e29dd9bab99be65}} 
+int \mbox{\hyperlink{fifo_8c_a86d6a642387583ff2e29dd9bab99be65}{status\+Init\+Mon}}
+\begin{DoxyCompactList}\small\item\em return status on monitor initialization \end{DoxyCompactList}\item 
+int $\ast$ \mbox{\hyperlink{fifo_8c_aaa5ae87c35407721e6a2bd99a125fe5c}{status\+Main}}
+\begin{DoxyCompactList}\small\item\em producer threads return status array \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fifo_8c_a1cb6018e07acf1baf8890aa9fe20572b}\label{fifo_8c_a1cb6018e07acf1baf8890aa9fe20572b}} 
+int $\ast$ \mbox{\hyperlink{fifo_8c_a1cb6018e07acf1baf8890aa9fe20572b}{status\+Workers}}
+\begin{DoxyCompactList}\small\item\em worker threads return status array \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fifo_8c_ad573dee4f2c7bdfbb0bf48e703c14313}\label{fifo_8c_ad573dee4f2c7bdfbb0bf48e703c14313}} 
+int \mbox{\hyperlink{fifo_8c_ad573dee4f2c7bdfbb0bf48e703c14313}{n\+Store\+Pos}}
+\begin{DoxyCompactList}\small\item\em number of storage positions in the data transfer region \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Problem name\+: Text processing in Portuguese Synchronization based on monitors. Both threads and the monitor are implemented using the pthread library which enables the creation of a monitor of the Lampson / Redell type. 
+
+Data transfer region implemented as a monitor.
+
+Definition of the operations carried out by the producers / workers\+: \begin{DoxyItemize}
+\item put\+Chunk \item get\+Chunk.\end{DoxyItemize}
+\begin{DoxyAuthor}{Author}
+João Morais and Miguel Ferreira 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{fifo_8c_a3449032e46162fc89fd06ccb2c83d960}\label{fifo_8c_a3449032e46162fc89fd06ccb2c83d960}} 
+\index{fifo.c@{fifo.c}!getChunk@{getChunk}}
+\index{getChunk@{getChunk}!fifo.c@{fifo.c}}
+\doxysubsubsection{\texorpdfstring{getChunk()}{getChunk()}}
+{\footnotesize\ttfamily int get\+Chunk (\begin{DoxyParamCaption}\item[{unsigned int}]{cons\+Id,  }\item[{\mbox{\hyperlink{structChunk}{Chunk}} $\ast$}]{res }\end{DoxyParamCaption})}
+
+
+
+Get a value from the data transfer region. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cons\+Id} & worker identification \\
+\hline
+{\em res} & return the chunk of data\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fifo_8c_adda94fffa3716e54d67962c01bbaa06d}\label{fifo_8c_adda94fffa3716e54d67962c01bbaa06d}} 
+\index{fifo.c@{fifo.c}!putChunk@{putChunk}}
+\index{putChunk@{putChunk}!fifo.c@{fifo.c}}
+\doxysubsubsection{\texorpdfstring{putChunk()}{putChunk()}}
+{\footnotesize\ttfamily void put\+Chunk (\begin{DoxyParamCaption}\item[{unsigned int}]{prod\+Id,  }\item[{\mbox{\hyperlink{structChunk}{Chunk}}}]{val,  }\item[{bool}]{lt }\end{DoxyParamCaption})}
+
+
+
+Store a value in the data transfer region. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prod\+Id} & producer identification \\
+\hline
+{\em val} & chunk of data to save \\
+\hline
+{\em lt} & flag \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{fifo_8c_aaa5ae87c35407721e6a2bd99a125fe5c}\label{fifo_8c_aaa5ae87c35407721e6a2bd99a125fe5c}} 
+\index{fifo.c@{fifo.c}!statusMain@{statusMain}}
+\index{statusMain@{statusMain}!fifo.c@{fifo.c}}
+\doxysubsubsection{\texorpdfstring{statusMain}{statusMain}}
+{\footnotesize\ttfamily int$\ast$ status\+Main\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+producer threads return status array 
+
+producer threads return status array 

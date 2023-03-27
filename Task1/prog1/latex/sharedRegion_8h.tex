@@ -1,0 +1,95 @@
+\hypertarget{sharedRegion_8h}{}\doxysection{shared\+Region.\+h File Reference}
+\label{sharedRegion_8h}\index{sharedRegion.h@{sharedRegion.h}}
+
+
+Problem name\+: Text processing in Portuguese.  
+
+
+{\ttfamily \#include \char`\"{}data\+Structures.\+h\char`\"{}}\newline
+Include dependency graph for shared\+Region.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sharedRegion_8h_a3f23a26ab7b91dbd8909ea4fcb722fa1}{initialization}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the data transfer region. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sharedRegion_8h_a475fd680e647c08690063234d5fcfbca}{store\+File\+Names}} (unsigned int thread\+ID, int num\+Files, char $\ast$file\+Names\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Store the names of files to be processed from the shared region structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sharedRegion_8h_a9d6b2080ecf5082f1bb2c0a22db6b452}{print\+Processing\+Results}} (unsigned int thread\+ID)
+\begin{DoxyCompactList}\small\item\em Print the processing results. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sharedRegion_8h_a4b5133f0bed62c58256791608c30302e}{save\+Partial\+Results}} (unsigned int thread\+ID, \mbox{\hyperlink{structTempResults}{Temp\+Results}} $\ast$partial\+Results)
+\begin{DoxyCompactList}\small\item\em Adds the results from each worker. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Problem name\+: Text processing in Portuguese. 
+
+\begin{DoxyAuthor}{Author}
+João Morais and Miguel Ferreira 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sharedRegion_8h_a3f23a26ab7b91dbd8909ea4fcb722fa1}\label{sharedRegion_8h_a3f23a26ab7b91dbd8909ea4fcb722fa1}} 
+\index{sharedRegion.h@{sharedRegion.h}!initialization@{initialization}}
+\index{initialization@{initialization}!sharedRegion.h@{sharedRegion.h}}
+\doxysubsubsection{\texorpdfstring{initialization()}{initialization()}}
+{\footnotesize\ttfamily void initialization (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the data transfer region. 
+
+This function is called exactly once by an worker thread. It initializes the data transfer region. \mbox{\Hypertarget{sharedRegion_8h_a9d6b2080ecf5082f1bb2c0a22db6b452}\label{sharedRegion_8h_a9d6b2080ecf5082f1bb2c0a22db6b452}} 
+\index{sharedRegion.h@{sharedRegion.h}!printProcessingResults@{printProcessingResults}}
+\index{printProcessingResults@{printProcessingResults}!sharedRegion.h@{sharedRegion.h}}
+\doxysubsubsection{\texorpdfstring{printProcessingResults()}{printProcessingResults()}}
+{\footnotesize\ttfamily void print\+Processing\+Results (\begin{DoxyParamCaption}\item[{unsigned int}]{thread\+ID }\end{DoxyParamCaption})}
+
+
+
+Print the processing results. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em thread\+ID} & thread identification \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sharedRegion_8h_a4b5133f0bed62c58256791608c30302e}\label{sharedRegion_8h_a4b5133f0bed62c58256791608c30302e}} 
+\index{sharedRegion.h@{sharedRegion.h}!savePartialResults@{savePartialResults}}
+\index{savePartialResults@{savePartialResults}!sharedRegion.h@{sharedRegion.h}}
+\doxysubsubsection{\texorpdfstring{savePartialResults()}{savePartialResults()}}
+{\footnotesize\ttfamily void save\+Partial\+Results (\begin{DoxyParamCaption}\item[{unsigned int}]{thread\+ID,  }\item[{\mbox{\hyperlink{structTempResults}{Temp\+Results}} $\ast$}]{partial\+Results }\end{DoxyParamCaption})}
+
+
+
+Adds the results from each worker. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em thread\+ID} & thread identification \\
+\hline
+{\em partial\+Results} & partial results obtained by processing a chunk \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sharedRegion_8h_a475fd680e647c08690063234d5fcfbca}\label{sharedRegion_8h_a475fd680e647c08690063234d5fcfbca}} 
+\index{sharedRegion.h@{sharedRegion.h}!storeFileNames@{storeFileNames}}
+\index{storeFileNames@{storeFileNames}!sharedRegion.h@{sharedRegion.h}}
+\doxysubsubsection{\texorpdfstring{storeFileNames()}{storeFileNames()}}
+{\footnotesize\ttfamily void store\+File\+Names (\begin{DoxyParamCaption}\item[{unsigned int}]{thread\+ID,  }\item[{int}]{num\+Files,  }\item[{char $\ast$}]{file\+Names\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Store the names of files to be processed from the shared region structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em thread\+ID} & thread identification \\
+\hline
+{\em num\+Files} & number of files to be processed \\
+\hline
+{\em file\+Names} & pointer to the array of file names \\
+\hline
+\end{DoxyParams}

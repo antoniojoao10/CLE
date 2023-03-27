@@ -1,0 +1,46 @@
+\hypertarget{countWords_8c}{}\doxysection{count\+Words.\+c File Reference}
+\label{countWords_8c}\index{countWords.c@{countWords.c}}
+
+
+Problem name\+: Text processing in Portuguese Counts the number of words and words with A, E, I, O, U, Y and Ç  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}data\+Structures.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}count\+Words.\+h\char`\"{}}\newline
+Include dependency graph for count\+Words.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{countWords_8c_aab06a0d3d127f15fca5918f21ef722d9}{count}} (\mbox{\hyperlink{structChunk}{Chunk}} $\ast$in, \mbox{\hyperlink{structTempResults}{Temp\+Results}} $\ast$out)
+\begin{DoxyCompactList}\small\item\em Counts the number of words and words with A, E, I, O, U, Y and Ç \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Problem name\+: Text processing in Portuguese Counts the number of words and words with A, E, I, O, U, Y and Ç 
+
+\begin{DoxyAuthor}{Author}
+João Morais and Miguel Ferreira 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{countWords_8c_aab06a0d3d127f15fca5918f21ef722d9}\label{countWords_8c_aab06a0d3d127f15fca5918f21ef722d9}} 
+\index{countWords.c@{countWords.c}!count@{count}}
+\index{count@{count}!countWords.c@{countWords.c}}
+\doxysubsubsection{\texorpdfstring{count()}{count()}}
+{\footnotesize\ttfamily void count (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structChunk}{Chunk}} $\ast$}]{in,  }\item[{\mbox{\hyperlink{structTempResults}{Temp\+Results}} $\ast$}]{out }\end{DoxyParamCaption})}
+
+
+
+Counts the number of words and words with A, E, I, O, U, Y and Ç 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & chunk of data received by the worker \\
+\hline
+{\em out} & partial results of this chunk \\
+\hline
+\end{DoxyParams}

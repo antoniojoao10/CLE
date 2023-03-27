@@ -1,0 +1,77 @@
+\hypertarget{fifo_8h}{}\doxysection{fifo.\+h File Reference}
+\label{fifo_8h}\index{fifo.h@{fifo.h}}
+
+
+Problem name\+: Text processing in Portuguese.  
+
+
+{\ttfamily \#include \char`\"{}data\+Structures.\+h\char`\"{}}\newline
+Include dependency graph for fifo.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fifo_8h_adda94fffa3716e54d67962c01bbaa06d}{put\+Chunk}} (unsigned int prod\+Id, \mbox{\hyperlink{structChunk}{Chunk}} val, bool lt)
+\begin{DoxyCompactList}\small\item\em Store a value in the data transfer region. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fifo_8h_a3449032e46162fc89fd06ccb2c83d960}{get\+Chunk}} (unsigned int cons\+Id, \mbox{\hyperlink{structChunk}{Chunk}} $\ast$res)
+\begin{DoxyCompactList}\small\item\em Get a value from the data transfer region. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Problem name\+: Text processing in Portuguese. 
+
+(interface file)
+
+Synchronization based on monitors. Both threads and the monitor are implemented using the pthread library which enables the creation of a monitor of the Lampson / Redell type.
+
+Data transfer region implemented as a monitor.
+
+Definition of the operations carried out by the producers / consumers\+: \begin{DoxyItemize}
+\item put\+Val \item get\+Val.\end{DoxyItemize}
+\begin{DoxyAuthor}{Author}
+João Morais and Miguel Ferreira 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{fifo_8h_a3449032e46162fc89fd06ccb2c83d960}\label{fifo_8h_a3449032e46162fc89fd06ccb2c83d960}} 
+\index{fifo.h@{fifo.h}!getChunk@{getChunk}}
+\index{getChunk@{getChunk}!fifo.h@{fifo.h}}
+\doxysubsubsection{\texorpdfstring{getChunk()}{getChunk()}}
+{\footnotesize\ttfamily int get\+Chunk (\begin{DoxyParamCaption}\item[{unsigned int}]{cons\+Id,  }\item[{\mbox{\hyperlink{structChunk}{Chunk}} $\ast$}]{res }\end{DoxyParamCaption})}
+
+
+
+Get a value from the data transfer region. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cons\+Id} & worker identification \\
+\hline
+{\em res} & return the chunk of data\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fifo_8h_adda94fffa3716e54d67962c01bbaa06d}\label{fifo_8h_adda94fffa3716e54d67962c01bbaa06d}} 
+\index{fifo.h@{fifo.h}!putChunk@{putChunk}}
+\index{putChunk@{putChunk}!fifo.h@{fifo.h}}
+\doxysubsubsection{\texorpdfstring{putChunk()}{putChunk()}}
+{\footnotesize\ttfamily void put\+Chunk (\begin{DoxyParamCaption}\item[{unsigned int}]{prod\+Id,  }\item[{\mbox{\hyperlink{structChunk}{Chunk}}}]{val,  }\item[{bool}]{lt }\end{DoxyParamCaption})}
+
+
+
+Store a value in the data transfer region. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prod\+Id} & producer identification \\
+\hline
+{\em val} & chunk of data to save \\
+\hline
+{\em lt} & flag \\
+\hline
+\end{DoxyParams}
